@@ -2,7 +2,7 @@
 set -e
 
 # variable for the PG conf location because we're working on it so much
-PGCONF="/usr/share/postgresql/9.3/postgresql.conf.sample"
+PGCONF="/var/lib/postgresql/data/postgresql.conf"
 
 # Settings to allow 2GB
 sed -i 's/#*kernel.shmmax = .*/kernel.shmmax = 2147483648/' /etc/sysctl.d/30-postgresql-shm.conf
