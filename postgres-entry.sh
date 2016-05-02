@@ -4,11 +4,6 @@ set -e
 # variable for the PG conf location because we're working on it so much
 PGCONF="/usr/share/postgresql/9.3/postgresql.conf"
 
-# Settings to allow 2GB
-sed -i 's/#*kernel.shmmax = .*/kernel.shmmax = 2147483648/' /etc/sysctl.d/30-postgresql-shm.conf
-sed -i 's/#*kernel.shmall = .*/kernel.shmmax = 524288/' /etc/sysctl.d/30-postgresql-shm.conf
-sysctl -p # doesn't work, what's the sysctl command?
-
 sed -i 's/#*shared_buffers = .*/shared_buffers = 1GB/' $PGCONF
 # Set to about 50% of system memory
 sed -i 's/#*effective_cache_size = .*/effective_cache_size = 8GB/' $PGCONF
